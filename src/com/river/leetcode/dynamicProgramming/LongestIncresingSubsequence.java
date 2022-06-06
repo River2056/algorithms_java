@@ -3,6 +3,13 @@ package com.river.leetcode.dynamicProgramming;
 import java.util.Arrays;
 
 public class LongestIncresingSubsequence {
+    /**
+     * two nested loops: outer loop goes backwards, inner loop goes forward compare each num, if
+     * front < rear: update dp[i] update: Math.max(dp[i], 1 + dp[j])
+     * 
+     * @param nums
+     * @return
+     */
     public static int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length];
         Arrays.fill(dp, 1);
