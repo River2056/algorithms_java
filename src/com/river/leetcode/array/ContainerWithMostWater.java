@@ -29,8 +29,27 @@ public class ContainerWithMostWater {
         return maxArea;
     }
 
+    // optimal
+    public static int containerWithMostWater(int[] height) {
+        int maxArea = 0;
+        int i = 0, j = height.length - 1;
+
+        while (i < j) {
+            int w = Math.abs(j - i);
+            int h = Math.min(height[i], height[j]);
+            maxArea = Math.max(maxArea, (w * h));
+            if (height[i] < height[j]) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+
+        return maxArea;
+    }
+
     public static void main(String[] args) {
-        CustomFunction fn = heights -> containerWithMostWaterBrute(heights);
+        CustomFunction fn = heights -> containerWithMostWater(heights);
         printResult(new int[] {1, 8, 6, 2, 5, 4, 8, 3, 7}, 49, fn);
         printResult(new int[] {7, 1, 2, 3, 9}, 28, fn);
         printResult(new int[] {1, 2, 3, 4, 5}, 6, fn);
