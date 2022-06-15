@@ -15,7 +15,7 @@ public class SubArraySumEqualsK {
             if (map.containsKey(check))
                 res += map.get(check);
 
-            map.put(check, map.getOrDefault(check, 1) + 1);
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
 
         return res;
