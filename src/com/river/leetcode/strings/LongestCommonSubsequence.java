@@ -1,26 +1,6 @@
 package com.river.leetcode.strings;
 
 public class LongestCommonSubsequence {
-    public int longestCommonSubsequenceSelf(String text1, String text2) {
-        int res = 0;
-        int p1 = 0, p2 = 0;
-
-        while (p1 < text1.length() || p2 < text2.length()) {
-            if (text1.charAt(p1) == text2.charAt(p2)) {
-                res++;
-                p1++;
-                p2++;
-            } else {
-                if (p1 <= p2)
-                    p1++;
-                else
-                    p2++;
-            }
-        }
-
-        return res;
-    }
-
     /**
      * initialize dp as 2d array dp = [ [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0,
      * 0, 0, 0], ]
@@ -35,7 +15,6 @@ public class LongestCommonSubsequence {
      * @return
      */
     public int longestCommonSubsequence(String text1, String text2) {
-        int res = 0;
         int[][] dp = new int[text1.length() + 1][text2.length() + 1];
 
         for (int i = dp.length - 2; i >= 0; i--) {
@@ -49,15 +28,6 @@ public class LongestCommonSubsequence {
         }
 
         return dp[0][0];
-    }
-
-    private int bottomUp(String t1, String t2) {
-        if (t1.charAt(0) == t2.charAt(0)) {
-            return 1;
-        } else {
-
-            return Math.max(bottomUp(t1.substring(1), t2), bottomUp(t1, t2.substring(1)));
-        }
     }
 
     public static void main(String[] args) {
