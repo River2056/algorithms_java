@@ -4,10 +4,8 @@ import java.util.Arrays;
 
 public class UniquePaths {
 
-    private int[][] grid;
-
     public int uniquePaths(int m, int n) {
-        grid = new int[m][n];
+        int[][] grid = new int[m][n];
         for (int[] arr : grid)
             Arrays.fill(arr, 1);
 
