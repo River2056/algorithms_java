@@ -41,9 +41,6 @@ public class SpiralMatrix {
             dir %= 4;
         }
 
-        // if (visited[rowIndex][columnIndex])
-        // return false;
-
         traverseMatrix(matrix, result, rowIndex + dirY[dir], columnIndex + dirX[dir]);
     }
 
