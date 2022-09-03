@@ -4,39 +4,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ClimbingStairs {
-    public int climbStairs(int n) {
-        if (n == 1)
-            return 1;
-        int first = 1;
-        int second = 2;
-        for (int i = 3; i <= n; i++) {
-            int third = first + second;
-            first = second;
-            second = third;
-        }
-
-        return second;
+  public int climbStairs(int n) {
+    if (n == 1) return 1;
+    int first = 1;
+    int second = 2;
+    for (int i = 3; i <= n; i++) {
+      int third = first + second;
+      first = second;
+      second = third;
     }
 
-    public int climbStairsMemoization(int n) {
-        return climbStairsMemo(new HashMap<Integer, Integer>(), n);
-    }
+    return second;
+  }
 
-    private int climbStairsMemo(Map<Integer, Integer> map, int n) {
-        if (n <= 2)
-            return n;
-        if (map.containsKey(n))
-            return map.get(n);
-        int val = climbStairsMemo(map, n - 1) + climbStairsMemo(map, n - 2);
-        map.put(n, val);
-        return val;
-    }
+  public int climbStairsMemoization(int n) {
+    return climbStairsMemo(new HashMap<Integer, Integer>(), n);
+  }
 
-    public static void main(String[] args) {
-        ClimbingStairs cs = new ClimbingStairs();
+  private int climbStairsMemo(Map<Integer, Integer> map, int n) {
+    if (n <= 2) return n;
+    if (map.containsKey(n)) return map.get(n);
+    int val = climbStairsMemo(map, n - 1) + climbStairsMemo(map, n - 2);
+    map.put(n, val);
+    return val;
+  }
 
-        System.out.printf("res: %s\n", cs.climbStairs(2)); // 2
-        System.out.printf("res: %s\n", cs.climbStairs(3)); // 3
-        System.out.printf("res: %s\n", cs.climbStairs(4)); // 5
-    }
+  public static void main(String[] args) {
+    ClimbingStairs cs = new ClimbingStairs();
+
+    System.out.printf("res: %s\n", cs.climbStairs(2)); // 2
+    System.out.printf("res: %s\n", cs.climbStairs(3)); // 3
+    System.out.printf("res: %s\n", cs.climbStairs(4)); // 5
+  }
 }
