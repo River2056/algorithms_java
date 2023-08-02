@@ -1,4 +1,4 @@
-package com.river.practice;
+package com.river.algo_expert.medium;
 
 /**
  * SplitBinaryTree
